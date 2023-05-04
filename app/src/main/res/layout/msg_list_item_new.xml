@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/msg_list_item_new"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:background="#fff">
+
+    <!-- A regular View breaks things for some reason, but a TextView does the job -->
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="40dip"
+        android:layout_height="match_parent"
+        tools:background="#0099CC"
+        android:visibility="visible" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/widget_padding">
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="4dp"
+            tools:text="25 May" />
+
+        <ImageView
+            android:id="@+id/attachment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/date"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="4dp"
+            android:layout_toStartOf="@+id/date"
+            android:src="@drawable/ic_messagelist_attachment_light"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@id/attachment"
+            android:layout_marginStart="4dp"
+            android:maxLines="1"
+            android:paddingRight="4dip"
+            android:paddingBottom="1dip"
+            android:paddingLeft="4dip"
+            android:textSize="16sp"
+            android:textColor="?android:attr/colorBackground"
+            android:background="@drawable/thread_count_box_light"
+            tools:text="3" />
+
+        <TextView
+            android:id="@+id/title1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="start"
+            android:layout_toStartOf="@id/count"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textSize="16sp"
+            tools:text="Kinda long subject that should be long enough to exceed the available display space" />
+
+        <TextView
+            android:id="@+id/title2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title1"
+            android:layout_alignParentStart="true"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:paddingBottom="2dp"
+            android:textSize="15sp"
+            tools:text="Wikipedia" />
+
+        <TextView
+            android:id="@+id/preview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title2"
+            android:layout_alignParentStart="true"
+            android:maxLines="1"
+            android:textSize="13sp"
+            tools:text="Towel Day is celebrated every year on 25 May as a tribute to the author Douglas Adams by his fans." />
+
+    </RelativeLayout>
+</LinearLayout>
