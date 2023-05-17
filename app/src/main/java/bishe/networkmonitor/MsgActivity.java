@@ -17,6 +17,8 @@ import android.widget.Toast;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import bishe.networkmonitor.dao.MsgViewModel;
@@ -49,10 +51,16 @@ public class MsgActivity extends AppCompatActivity {
 
         this.msgViewModel = new ViewModelProvider((ViewModelStoreOwner) this, (ViewModelProvider.Factory) ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(MsgViewModel.class);
         this.msgViewModel.getAllMsg().observe(this, msgs -> {
+            Collections.sort(msgs, new Comparator<TextMsg>() {
+                @Override
+                public int compare(TextMsg o1, TextMsg o2) {
+                    return Long.compare(o2.timestamp, o1.timestamp);
+                }
+            });
             adapter.submitList(msgs);
         });
         List<TextMsg> l = adapter.getCurrentList();
-        Log.i("listnum", Integer.toString(l.size()));
+//        Log.i("listnum", Integer.toString(l.size()));
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {

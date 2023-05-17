@@ -4,4 +4,8 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="buttonLabel">#FFFFFF</color>
+    <color name="green">#59B55D</color>
+    <color name="blue">#5592E9</color>
+    <color name="red">#E96456</color>
+    <color name="milk">#FFFFF0</color>
 </resources>

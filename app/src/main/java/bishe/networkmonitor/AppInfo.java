@@ -1,5 +1,8 @@
 package bishe.networkmonitor;
 
+import android.app.usage.UsageStats;
+import android.app.usage.UsageStatsManager;
+import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 
 import java.io.Serializable;
@@ -13,5 +16,7 @@ public class AppInfo implements Serializable{
     public String appName;
     public Drawable appIcon;
     public int uid;
+    public Long firstInstallTime = 0L;
+
 }
 

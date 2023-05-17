@@ -14,7 +14,7 @@ public class MsgRepository {
     private TextMsgDao dao;
     private LiveData<List<TextMsg>> mAllMsg;
 
-    MsgRepository(Application application, String databaseName, String databaseAssetPath) {
+    public MsgRepository(Application application, String databaseName, String databaseAssetPath) {
         MsgDatabase db = MsgDatabase.getDatabase(application, databaseName, databaseAssetPath, sRoomDatabaseCallback);
         dao = db.textMsgDao();
         mAllMsg = dao.getAll();
@@ -43,7 +43,7 @@ public class MsgRepository {
         return mAllMsg;
     }
 
-    void insert(TextMsg textMsg) {
+    public void insert(TextMsg textMsg) {
         MsgDatabase.databaseWriteExecutor.execute(() -> {
             int maxId = dao.getMaxId();
             textMsg.id = maxId + 1;
@@ -51,7 +51,7 @@ public class MsgRepository {
         });
     }
 
-    void insertAll(TextMsg... textMsgs) {
+    public void insertAll(TextMsg... textMsgs) {
         MsgDatabase.databaseWriteExecutor.execute(() -> {
             int maxId = dao.getMaxId();
             int id = maxId + 1;

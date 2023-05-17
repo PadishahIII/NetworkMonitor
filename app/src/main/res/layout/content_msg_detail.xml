@@ -58,20 +58,31 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/direction"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:padding="8dp"
+            android:id="@+id/time"
             style="@style/direction"
-            tools:text="direction"
-            />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="8dp"
+            android:fontFamily="serif"
+            android:textSize="15dp"
+            tools:text="direction" />
+
+        <TextView
+            android:id="@+id/direction"
+            style="@style/direction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            tools:text="direction" />
+
         <TextView
             android:id="@+id/app_name"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:padding="8dp"
             style="@style/direction"
-            android:background="@drawable/text_border_orange"
+            android:background="@drawable/text_border_green"
             tools:text="direction"
             />
 
@@ -82,7 +93,45 @@
             android:padding="8dp"
             tools:text="Unsigned text content" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/main_text"
+            >
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/img"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/ic_main_panel"
+                ></ImageView>
+            <TextView
+                android:id="@+id/pre_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:visibility="visible"
+                tools:text="The picture captured in traffic as below:" />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/img_pre"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                app:srcCompat="@drawable/ic_main_panel"
+                ></ImageView>
+
+        </LinearLayout>
+
     </LinearLayout>
+
+    <!--    <ImageView-->
+<!--        android:id="@+id/imageView4"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:srcCompat="@drawable/ic_log" />-->
 
     <!-- Attachments area -->
 

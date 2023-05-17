@@ -12,12 +12,14 @@
     <string name="title_privilege_control">网络权限控制</string>
     <string name="title_log">消息日志</string>
     <string name="title_applist">应用连接信息</string>
+    <string name="title_privilege">网络权限控制</string>
     <string name="title_msg_detail">详细信息</string>
     <string name="title_msg">消息日志</string>
+    <string name="title_test">测试数据</string>
     <string name="status_success">Running</string>
     <string name="status_fail">Off</string>
-    <string name="database_name">MsgL2.db</string>
-    <string name="database_asset_path">initTextMsgLatest2.db</string>
+    <string name="database_name">MsgL10.db</string>
+    <string name="database_asset_path">initTextMsgLatest1.db</string>
     <string name="unsigned_text_divider_label">未签名文本</string>
 
     <string name="hint_word">Text...</string>
@@ -163,4 +165,6 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+    <string name="title_activity_privilege">PrivilegeActivity</string>
+    <string name="title_activity_test_view">TestViewActivity</string>
 </resources>

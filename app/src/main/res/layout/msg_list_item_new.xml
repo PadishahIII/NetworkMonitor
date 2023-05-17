@@ -51,7 +51,7 @@
             android:paddingLeft="4dip"
             android:textSize="16sp"
             android:textColor="?android:attr/colorBackground"
-            android:background="@drawable/thread_count_box_light"
+            android:background="@color/red"
             tools:text="3" />
 
         <TextView

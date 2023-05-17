@@ -33,7 +33,7 @@ public class MsgListAdapter extends ListAdapter<TextMsg, MsgViewHolder> {
 
     @Override
     public void onBindViewHolder(MsgViewHolder msgViewHolder, int position) {
-        Log.d("listadapter", "in onBindViewHolder");
+//        Log.d("listadapter", "in onBindViewHolder");
         TextMsg textMsg = getItem(position);
         Drawable drawable;
         String titleText;
@@ -46,22 +46,27 @@ public class MsgListAdapter extends ListAdapter<TextMsg, MsgViewHolder> {
 
                 break;
             case 2:
-                drawable = ContextCompat.getDrawable(mContext, R.drawable.ic_warning);
+                drawable = ContextCompat.getDrawable(mContext, R.drawable.ic_level_2);
 
                 break;
             case 3:
-                drawable = ContextCompat.getDrawable(mContext, R.drawable.ic_warning);
+                drawable = ContextCompat.getDrawable(mContext, R.drawable.ic_level_3);
+
+                break;
+            case 4:
+                drawable = ContextCompat.getDrawable(mContext, R.drawable.ic_level_4);
 
                 break;
             default:
-                drawable = ContextCompat.getDrawable(mContext, R.drawable.ic_warning);
+                drawable = ContextCompat.getDrawable(mContext, R.drawable.ic_level_2);
 
                 break;
         }
         previewText = TextMsg.trimString(textMsg.primaryText, 25);
         titleText = "\"" + textMsg.type + "\"";
         titleText2 = textMsg.getIPStr();
-        timeText = new SimpleDateFormat("MM-dd HH:mm").format(new Date(textMsg.timestamp));
+        timeText = new SimpleDateFormat("MM-dd HH:mm").format(new Date(textMsg.timestamp * 1000
+        ));
 
         msgViewHolder.bind(drawable, titleText, titleText2, previewText, timeText, textMsg);
         msgViewHolder.itemView.setOnClickListener(new View.OnClickListener() {

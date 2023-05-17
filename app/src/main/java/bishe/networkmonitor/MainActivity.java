@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity
 
         ecaptureStatus.setText(R.string.status_success);
         nidsStatus.setText(R.string.status_success);
-        serverStatus.setText(R.string.status_fail);
+        serverStatus.setText(R.string.status_success);
     }
 
 
@@ -116,12 +116,17 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_main_content) {
             // Handle the camera action
         } else if (id == R.id.nav_privilege) {
-
+            Intent intent = new Intent(this, PrivilegeActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivity(intent);
         } else if (id == R.id.nav_msg) {
             Intent intent = new Intent(this, MsgActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             startActivity(intent);
         } else if (id == R.id.nav_share) {
+            Intent intent = new Intent(this, TestViewActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivity(intent);
 
         } else if (id == R.id.nav_send) {
 

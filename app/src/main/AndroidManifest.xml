@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="bishe.networkmonitor">
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_protection"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".TestViewActivity"
+            android:label="@string/title_activity_test_view"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".PrivilegeActivity"
+            android:label="@string/title_activity_privilege"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".EditNewMsgActivity"
             android:exported="false"
@@ -41,8 +52,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MsgDetailActivity"
-            android:parentActivityName=".MsgActivity"
             android:label="@string/title_activity_msg_detail"
+            android:parentActivityName=".MsgActivity"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
 

@@ -23,12 +23,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
             <TextView
-                android:background="@color/gray"
+                style="@style/word_title"
+                android:background="@color/blue"
                 android:text="组件"
                 android:gravity="left"
                 />
             <TextView
-                android:background="@color/gray"
+                style="@style/word_title"
+                android:background="@color/blue"
                 android:text="状态"
                 android:gravity="right"
                 />
@@ -39,13 +41,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
             <TextView
+                style="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Large"
                 android:text="eCapture"
                 android:gravity="left"
                 />
             <TextView
+                style="@style/status"
                 android:id="@+id/ecapture_status"
                 android:text="正在检测..."
-                android:textColor="@color/darkgray"
                 android:gravity="right"
                 />
         </TableRow>
@@ -53,13 +56,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
             <TextView
+                style="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Large"
                 android:text="Nids"
                 android:gravity="left"
                 />
             <TextView
                 android:id="@+id/nids_status"
+                style="@style/status"
                 android:text="正在检测..."
-                android:textColor="@color/darkgray"
                 android:gravity="right"
                 />
         </TableRow>
@@ -67,30 +71,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
             <TextView
-                android:text="远程服务器"
+                style="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Large"
+                android:text="远程服务器(172.20.116.105:80)"
                 android:gravity="left"
                 />
             <TextView
                 android:id="@+id/server_status"
+                style="@style/status"
                 android:text="正在检测..."
-                android:textColor="@color/darkgray"
                 android:gravity="right"
                 />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-            <TextView
-                android:background="@color/gray"
-                android:text="配置"
-                android:gravity="left"
-                />
-            <TextView
-                android:background="@color/gray"
-                android:text="状态"
-                android:gravity="right"
-                />
-        </TableRow>
+            android:layout_height="match_parent" />
     </TableLayout>
 </RelativeLayout>
