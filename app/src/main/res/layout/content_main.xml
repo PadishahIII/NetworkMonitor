@@ -5,12 +5,12 @@
     android:id="@+id/content_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="bishe.networkmonitor.MainActivity"
+    tools:context="bishe.networkmonitor.activity.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
     <TableLayout
@@ -21,67 +21,139 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent">
+
             <TextView
                 style="@style/word_title"
                 android:background="@color/blue"
-                android:text="组件"
                 android:gravity="left"
-                />
+                android:text="组件" />
+
             <TextView
                 style="@style/word_title"
                 android:background="@color/blue"
-                android:text="状态"
                 android:gravity="right"
-                />
+                android:text="状态" />
         </TableRow>
 
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent">
+
             <TextView
                 style="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Large"
-                android:text="eCapture"
                 android:gravity="left"
-                />
+                android:text="eCapture Service" />
+
             <TextView
-                style="@style/status"
                 android:id="@+id/ecapture_status"
-                android:text="正在检测..."
+                style="@style/status"
                 android:gravity="right"
-                />
+                android:text="正在检测..." />
         </TableRow>
+
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent">
+
             <TextView
                 style="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Large"
-                android:text="Nids"
                 android:gravity="left"
-                />
+                android:text="Nids Service" />
+
             <TextView
                 android:id="@+id/nids_status"
                 style="@style/status"
-                android:text="正在检测..."
                 android:gravity="right"
-                />
-        </TableRow>
-        <TableRow
+                android:text="正在检测..." />
+        </TableRow><TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent">
+
             <TextView
                 style="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Large"
-                android:text="远程服务器(172.20.116.105:80)"
                 android:gravity="left"
-                />
+                android:text="Hyperscan Service" />
+
+            <TextView
+                android:id="@+id/hs_status"
+                style="@style/status"
+                android:gravity="right"
+                android:text="正在检测..." />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                style="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Large"
+                android:gravity="left"
+                android:text="远程服务器" />
+
             <TextView
                 android:id="@+id/server_status"
                 style="@style/status"
-                android:text="正在检测..."
                 android:gravity="right"
-                />
+                android:text="@string/detecting" />
         </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                style="@style/word_title"
+                android:background="@color/blue"
+                android:gravity="left"
+                android:text="配置" />
+
+            <TextView
+                style="@style/word_title"
+                android:background="@color/blue"
+                android:gravity="right"
+                android:text="" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                style="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Large"
+                android:gravity="left"
+                android:text="远程服务器IP地址" />
+
+            <EditText
+                android:id="@+id/edit_ip"
+                style="@style/status"
+                android:gravity="center"
+                android:text="@string/server_ip_default" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                style="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Large"
+                android:gravity="left"
+                android:text="远程服务器端口号" />
+
+            <EditText
+                android:id="@+id/edit_port"
+                style="@style/status"
+                android:gravity="center"
+                android:text="@string/server_port_default" />
+        </TableRow>
+
+        <Button
+            android:id="@+id/save_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Save"></Button>
 
         <TableRow
             android:layout_width="match_parent"

@@ -1,4 +1,4 @@
-package bishe.networkmonitor;
+package bishe.networkmonitor.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -6,10 +6,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import android.util.Log;
 import android.view.Gravity;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -24,6 +21,10 @@ import androidx.appcompat.widget.Toolbar;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import bishe.networkmonitor.pojo.NetworkConnection;
+import bishe.networkmonitor.R;
+import bishe.networkmonitor.util.ConnReader;
 
 public class AppConnDetailActivity extends AppCompatActivity {
     public Context context;

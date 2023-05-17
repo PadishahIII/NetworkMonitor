@@ -1,4 +1,4 @@
-package bishe.networkmonitor;
+package bishe.networkmonitor.pojo;
 
 import android.app.usage.UsageStats;
 import android.app.usage.UsageStatsManager;

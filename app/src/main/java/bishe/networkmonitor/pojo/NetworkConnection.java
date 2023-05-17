@@ -1,4 +1,4 @@
-package bishe.networkmonitor;
+package bishe.networkmonitor.pojo;
 
 /**
  * Created by Dell on 4/27/2023.

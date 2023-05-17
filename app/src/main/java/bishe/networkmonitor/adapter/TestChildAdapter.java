@@ -1,4 +1,4 @@
-package bishe.networkmonitor;
+package bishe.networkmonitor.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import bishe.networkmonitor.R;
 import bishe.networkmonitor.dao.MsgRepository;
 import bishe.networkmonitor.dao.TextMsg;
 

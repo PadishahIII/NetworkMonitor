@@ -1,9 +1,9 @@
-package bishe.networkmonitor;
+package bishe.networkmonitor.adapter;
 
-import android.app.AppOpsManager;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
+import android.os.AsyncTask;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +20,10 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
+import bishe.networkmonitor.activity.AppConnDetailActivity;
+import bishe.networkmonitor.pojo.AppPrivilegeInfo;
+import bishe.networkmonitor.R;
+
 public class AppPrivilegeAdapter extends BaseAdapter {
     private Context mContext;
     private List<AppPrivilegeInfo> mAppInfos;
@@ -30,6 +34,29 @@ public class AppPrivilegeAdapter extends BaseAdapter {
             TimeUnit.SECONDS, // 超时单位
             new LinkedBlockingQueue<Runnable>() // 线程队列
     );
+
+    private class ExecTask extends AsyncTask<Void, Void, Void> {
+        String packageName;
+        int uid;
+        boolean s;
+
+        public ExecTask(String packageName, int uid, boolean s) {
+            this.packageName = packageName;
+            this.uid = uid;
+            this.s = s;
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            changeNetworkPermission(packageName, uid, s);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void voids) {
+            Log.d("exec", "done");
+        }
+    }
 
     public AppPrivilegeAdapter(Context context, List<AppPrivilegeInfo> appInfos) {
         mContext = context;
@@ -94,14 +121,17 @@ public class AppPrivilegeAdapter extends BaseAdapter {
         return view;
     }
 
-    private void execCmd(String packageName,int uid,boolean s){
-        executor.execute(new Runnable() {
-            @Override
-            public void run() {
-                changeNetworkPermission(packageName,uid,s);
-            }
-        });
+    private void execCmd(String packageName, int uid, boolean s) {
+//        executor.execute(new Runnable() {
+//            @Override
+//            public void run() {
+//                changeNetworkPermission(packageName,uid,s);
+//            }
+//        });
+        ExecTask execTask = new ExecTask(packageName, uid, s);
+        execTask.execute();
     }
+
     private void changeNetworkPermission(String packageName, int uid, boolean s) {
 //        NetworkPolicyManager policyManager = (NetworkPolicyManager) getSystemService(NETWORK_POLICY_SERVICE);
 //        int uid = getPackageManager().getPackageUid(packageName, 0);
@@ -110,16 +140,18 @@ public class AppPrivilegeAdapter extends BaseAdapter {
 //        int state = s ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED : PackageManager.COMPONENT_ENABLED_STATE_DISABLED;
 //        packageManager.setApplicationEnabledSetting(packageName, state, PackageManager.DONT_KILL_APP);
         String cmd = s ? "iptables -D OUTPUT -m owner --uid-owner " + Integer.toString(uid) + " -j DROP" : "iptables -A OUTPUT -m owner --uid-owner " + Integer.toString(uid) + " -j DROP";
+        String[] cmds = {"/system/bin/sh", "-c", cmd};
         try {
-            Process process = new ProcessBuilder()
-                    .command(cmd)
-                    .redirectErrorStream(true)
-                    .start();
-            DataOutputStream dataOutputStream = new DataOutputStream(process.getOutputStream());
-            dataOutputStream.writeBytes(cmd);
-            dataOutputStream.flush();
-            dataOutputStream.writeBytes("exit\n");
-            dataOutputStream.flush();
+//            Process process = new ProcessBuilder()
+//                    .command(cmd)
+//                    .redirectErrorStream(true)
+//                    .start();
+//            DataOutputStream dataOutputStream = new DataOutputStream(process.getOutputStream());
+//            dataOutputStream.writeBytes(cmd);
+//            dataOutputStream.flush();
+//            dataOutputStream.writeBytes("exit\n");
+//            dataOutputStream.flush();
+            Process process = Runtime.getRuntime().exec(cmds);
             try {
                 process.waitFor();
             } catch (InterruptedException e) {

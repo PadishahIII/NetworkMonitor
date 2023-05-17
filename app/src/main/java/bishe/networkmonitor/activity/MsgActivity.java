@@ -1,4 +1,4 @@
-package bishe.networkmonitor;
+package bishe.networkmonitor.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,17 +10,16 @@ import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
-import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import bishe.networkmonitor.R;
+import bishe.networkmonitor.adapter.MsgListAdapter;
 import bishe.networkmonitor.dao.MsgViewModel;
 import bishe.networkmonitor.dao.TextMsg;
 

@@ -1,4 +1,4 @@
-package bishe.networkmonitor;
+package bishe.networkmonitor.util;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -8,6 +8,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import bishe.networkmonitor.pojo.NetworkConnection;
 
 /**
  * Created by Dell on 4/27/2023.

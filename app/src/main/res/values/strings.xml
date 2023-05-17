@@ -18,9 +18,18 @@
     <string name="title_test">测试数据</string>
     <string name="status_success">Running</string>
     <string name="status_fail">Off</string>
+    <string name="sp_name">server</string>
+    <string name="server_ip">serverIP</string>
+    <string name="server_port">serverPort</string>
+    <string name="server_ip_default">172.20.6.107</string>
+    <string name="server_port_default">443</string>
+    <string name="server_test_path">evil.php</string>
     <string name="database_name">MsgL10.db</string>
+    <string name="detecting">正在检测...</string>
     <string name="database_asset_path">initTextMsgLatest1.db</string>
     <string name="unsigned_text_divider_label">未签名文本</string>
+    <string name="msg_detail_pre_text">The picture captured in traffic as below:</string>
+
 
     <string name="hint_word">Text...</string>
     <string name="button_save">Save</string>

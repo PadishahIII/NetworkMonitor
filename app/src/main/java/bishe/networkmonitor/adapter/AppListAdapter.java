@@ -1,8 +1,7 @@
-package bishe.networkmonitor;
+package bishe.networkmonitor.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +10,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
+
+import bishe.networkmonitor.activity.AppConnDetailActivity;
+import bishe.networkmonitor.R;
+import bishe.networkmonitor.pojo.AppInfo;
 
 /**
  * Created by Dell on 4/27/2023.
@@ -55,7 +58,7 @@ public class AppListAdapter extends BaseAdapter {
         view.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(mContext,AppConnDetailActivity.class);
+                Intent intent = new Intent(mContext, AppConnDetailActivity.class);
 //                intent.putExtra("appName",appName);
                 intent.putExtra("packageName",packageName);
                 intent.putExtra("uid",uid);

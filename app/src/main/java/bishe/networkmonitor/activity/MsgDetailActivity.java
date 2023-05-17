@@ -1,4 +1,4 @@
-package bishe.networkmonitor;
+package bishe.networkmonitor.activity;
 
 import android.content.Intent;
 import android.content.res.AssetManager;
@@ -22,6 +22,7 @@ import com.google.android.material.snackbar.Snackbar;
 import java.io.IOException;
 import java.io.InputStream;
 
+import bishe.networkmonitor.R;
 import bishe.networkmonitor.dao.TextMsg;
 
 public class MsgDetailActivity extends AppCompatActivity {
@@ -93,6 +94,7 @@ public class MsgDetailActivity extends AppCompatActivity {
                 preImgView.setAdjustViewBounds(true);
                 preImgView.setVisibility(View.VISIBLE);
                 preTextView.setVisibility(View.VISIBLE);
+                preTextView.setText(getString(R.string.msg_detail_pre_text));
             } catch (IOException e) {
                 Log.d("asset error", "not found:" + imgStr);
             }

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="bishe.networkmonitor.PrivilegeActivity"
+    tools:context="bishe.networkmonitor.activity.PrivilegeActivity"
     tools:showIn="@layout/activity_privilege">
 
     <LinearLayout

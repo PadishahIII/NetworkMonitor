@@ -23,7 +23,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    sourceSets { main { assets.srcDirs = ['src/main/assets', 'src/main/assets/database', 'src\\main\\assets', 'src\\main\\assets\\images'] } }
+    sourceSets { main { assets.srcDirs = ['src/main/assets', 'src/main/assets/database', 'src\\main\\assets', 'src\\main\\assets\\images']
+        java {
+            srcDirs 'src\\main\\java', 'src\\main\\java\\util'
+        }
+    } }
     buildFeatures {
         viewBinding true
     }
@@ -44,6 +48,7 @@ dependencies {
     })
     implementation 'androidx.appcompat:appcompat:1.0.0'
     implementation 'com.google.android.material:material:1.0.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.9.1'
     testImplementation 'junit:junit:4.12'
     def room_version = "2.5.0"
 

@@ -1,9 +1,11 @@
-package bishe.networkmonitor;
+package bishe.networkmonitor.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.drawable.Drawable;
 import android.text.Layout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,21 +17,28 @@ import android.widget.TextView;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.MalformedURLException;
 import java.util.List;
 
+import bishe.networkmonitor.R;
 import bishe.networkmonitor.dao.MsgRepository;
 import bishe.networkmonitor.dao.TextMsg;
+import bishe.networkmonitor.util.HttpUtil;
+import bishe.networkmonitor.util.MsgCallback;
 
 public class TestTitleAdapter extends BaseExpandableListAdapter {
     public List<String> titleList;
     public List<List<TextMsg>> childList;
     public MsgRepository msgRepository;
     public Context mContext;
-    public TestTitleAdapter(List<String> titleList, List<List<TextMsg>> childList, MsgRepository msgRepository,Context context) {
+    public Activity mActivity;
+
+    public TestTitleAdapter(List<String> titleList, List<List<TextMsg>> childList, MsgRepository msgRepository, Context context, Activity activity) {
         this.titleList = titleList;
         this.childList = childList;
         this.msgRepository = msgRepository;
         this.mContext = context;
+        this.mActivity = activity;
     }
 
     @Override
@@ -114,32 +123,41 @@ public class TestTitleAdapter extends BaseExpandableListAdapter {
         title.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(content.getVisibility() == View.VISIBLE){
+                if (content.getVisibility() == View.VISIBLE) {
                     content.setVisibility(View.GONE);
-                }else{
+                } else {
                     content.setVisibility(View.VISIBLE);
                 }
 
             }
         });
+        if (groupPosition == 0) {
+            btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    try {
+                        HttpUtil.Request(HttpUtil.getURL(textMsg).toString(), "POST", textMsg.primaryText, new MsgCallback(response, mActivity));
+                    } catch (MalformedURLException e) {
+                        Log.d("request error", e.toString());
+                    }
+                    Insert(textMsg);
+                }
+            });
+        } else {
 
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String res = "";
-                res = Request();
-                response.setText(res);
-                Insert(textMsg);
-            }
-        });
+            btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    response.setText(Integer.toString(200));
+                    Insert(textMsg);
+                }
+            });
+        }
         return convertView;
 
     }
-    private String Request() {
-        return "200";
-    }
 
-    private void Insert(TextMsg textMsg) {
+    public void Insert(TextMsg textMsg) {
         msgRepository.insert(textMsg);
     }
 

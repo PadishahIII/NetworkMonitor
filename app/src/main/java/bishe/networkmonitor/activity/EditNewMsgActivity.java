@@ -1,4 +1,4 @@
-package bishe.networkmonitor;
+package bishe.networkmonitor.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,6 +18,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import bishe.networkmonitor.R;
 import bishe.networkmonitor.databinding.ActivityEditNewMsgBinding;
 
 public class EditNewMsgActivity extends AppCompatActivity {

@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="bishe.networkmonitor">
-
+    <uses-permission android:name="android.permission.INTERNET" />5
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_protection"
@@ -10,22 +10,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".TestViewActivity"
+            android:name=".activity.TestViewActivity"
             android:label="@string/title_activity_test_view"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".activity.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".PrivilegeActivity"
+            android:name=".activity.PrivilegeActivity"
             android:label="@string/title_activity_privilege"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".activity.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".EditNewMsgActivity"
+            android:name=".activity.EditNewMsgActivity"
             android:exported="false"
             android:label="@string/title_activity_edit_new_msg"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
@@ -36,24 +36,24 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AppListMainActivity"
+            android:name=".activity.AppListMainActivity"
             android:label="@string/title_activity_app_list_main"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".activity.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".AppConnDetailActivity"
+            android:name=".activity.AppConnDetailActivity"
             android:label="@string/title_activity_app_conn_detail"
-            android:parentActivityName=".AppListMainActivity"
+            android:parentActivityName=".activity.AppListMainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".MsgActivity"
+            android:name=".activity.MsgActivity"
             android:label="@string/title_activity_msg"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".activity.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".MsgDetailActivity"
+            android:name=".activity.MsgDetailActivity"
             android:label="@string/title_activity_msg_detail"
-            android:parentActivityName=".MsgActivity"
+            android:parentActivityName=".activity.MsgActivity"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
 

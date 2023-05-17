@@ -1,4 +1,4 @@
-package bishe.networkmonitor;
+package bishe.networkmonitor.adapter;
 
 import android.content.Intent;
 
@@ -9,6 +9,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
+
+import bishe.networkmonitor.R;
+import bishe.networkmonitor.activity.AppListMainActivity;
 
 /**
  * Created by Dell on 4/27/2023.

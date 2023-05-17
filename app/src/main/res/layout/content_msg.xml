@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginTop="@dimen/margin_top"
-    tools:context="bishe.networkmonitor.MsgActivity"
+    tools:context="bishe.networkmonitor.activity.MsgActivity"
     tools:showIn="@layout/activity_msg">
 
     <androidx.recyclerview.widget.RecyclerView

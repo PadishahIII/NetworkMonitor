@@ -1,4 +1,4 @@
-package bishe.networkmonitor;
+package bishe.networkmonitor.dao;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import bishe.networkmonitor.dao.TextMsg;
+import bishe.networkmonitor.R;
 
 public class MsgViewHolder extends RecyclerView.ViewHolder {
 //    private final ImageView icon;
@@ -67,7 +67,7 @@ public class MsgViewHolder extends RecyclerView.ViewHolder {
 //        intent.putExtra("textmsg",textMsg);
     }
 
-    static MsgViewHolder create(ViewGroup parent) {
+    public static MsgViewHolder create(ViewGroup parent) {
 //        int layout = R.layout.msg_list_item;
         int layout = R.layout.msg_list_item_new;
         View view = LayoutInflater.from(parent.getContext()).inflate(layout, parent, false);

@@ -1,9 +1,8 @@
-package bishe.networkmonitor;
+package bishe.networkmonitor.adapter;
 
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -15,7 +14,9 @@ import androidx.recyclerview.widget.ListAdapter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import bishe.networkmonitor.dao.MsgViewModel;
+import bishe.networkmonitor.activity.MsgDetailActivity;
+import bishe.networkmonitor.R;
+import bishe.networkmonitor.dao.MsgViewHolder;
 import bishe.networkmonitor.dao.TextMsg;
 
 public class MsgListAdapter extends ListAdapter<TextMsg, MsgViewHolder> {
@@ -81,7 +82,7 @@ public class MsgListAdapter extends ListAdapter<TextMsg, MsgViewHolder> {
     }
 
 
-    static class MsgDiff extends DiffUtil.ItemCallback<TextMsg> {
+    public static class MsgDiff extends DiffUtil.ItemCallback<TextMsg> {
         @Override
         public boolean areItemsTheSame(@NonNull TextMsg oldItem, @NonNull TextMsg newItem) {
             return oldItem.id.equals(newItem.id);

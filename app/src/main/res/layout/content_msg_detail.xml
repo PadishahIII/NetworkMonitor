@@ -10,7 +10,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="bishe.networkmonitor.MsgDetailActivity"
+    tools:context="bishe.networkmonitor.activity.MsgDetailActivity"
     tools:showIn="@layout/activity_msg_detail">
 
     <LinearLayout
@@ -112,8 +112,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
-                android:visibility="visible"
-                tools:text="The picture captured in traffic as below:" />
+                android:visibility="gone"
+                tools:text="@string/msg_detail_pre_text" />
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
