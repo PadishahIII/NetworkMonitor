@@ -15,6 +15,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 
 import androidx.core.view.GravityCompat;
@@ -34,6 +35,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import bishe.networkmonitor.MsgService;
 import bishe.networkmonitor.R;
 import bishe.networkmonitor.util.HttpUtil;
 import okhttp3.Call;
@@ -78,6 +80,10 @@ public class MainActivity extends AppCompatActivity
 
         buildComponentStatus();
         buildEditText();
+
+        Intent intent = new Intent(this, MsgService.class);
+        startService(intent);
+        Log.d("server","start service");
     }
 
     @Override
@@ -118,6 +124,7 @@ public class MainActivity extends AppCompatActivity
                 } else {
                     editor.putString(getString(R.string.server_ip), ipText.getText().toString());
                     editor.putString(getString(R.string.server_port), portText.getText().toString());
+                    editor.apply();
                     setServerStatus(ipText.getText().toString(), Integer.parseInt(portText.getText().toString()));
 
                 }
@@ -139,6 +146,8 @@ public class MainActivity extends AppCompatActivity
                         public void run() {
                             serverStatus.setTextColor(getColor(R.color.red));
                             serverStatus.setText("Request Failed");
+                            Log.d("request error",e.toString());
+                            e.printStackTrace();
                         }
                     });
 

@@ -1,6 +1,9 @@
 package bishe.networkmonitor.activity;
 
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
@@ -11,6 +14,8 @@ import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.IBinder;
+import android.os.RemoteException;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -27,6 +32,7 @@ import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import bishe.networkmonitor.IMsgInterface;
 import bishe.networkmonitor.R;
 import bishe.networkmonitor.adapter.AppListAdapter;
 import bishe.networkmonitor.adapter.TestTitleAdapter;
@@ -49,6 +55,22 @@ public class TestViewActivity extends AppCompatActivity {
     public SharedPreferences sharedPreferences;
     public String serverIP;
     public int serverPort;
+    private IMsgInterface mService;
+    private boolean isBound = false;
+
+    private ServiceConnection mServiceConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            Log.d("client","onConnected");
+            mService = IMsgInterface.Stub.asInterface(service);
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            Log.d("client","onDisConnected");
+            mService = null;
+        }
+    };
     public Callback emptyCallback = new Callback() {
         @Override
         public void onFailure(@NotNull Call call, @NotNull IOException e) {
@@ -74,9 +96,10 @@ public class TestViewActivity extends AppCompatActivity {
                         Log.d("request error", e.toString());
                     }
                 }
-                msgRepository.insertAll(textList.stream().toArray(TextMsg[]::new));
+//                msgRepository.insertAll(textList.stream().toArray(TextMsg[]::new));
+                Thread.sleep(2000);
                 msgRepository.insertAll(ocrList.stream().toArray(TextMsg[]::new));
-                Thread.sleep(3000);
+                Thread.sleep(2000);
                 msgRepository.insertAll(otherList.stream().toArray(TextMsg[]::new));
             } catch (Exception e) {
                 Log.e("sql error", e.toString());
@@ -110,6 +133,7 @@ public class TestViewActivity extends AppCompatActivity {
         msgRepository = new MsgRepository(getApplication(), getString(R.string.database_name), getString(R.string.database_asset_path));
         sharedPreferences = getSharedPreferences(getString(R.string.sp_name), Context.MODE_PRIVATE);
         serverIP = sharedPreferences.getString(getString(R.string.server_ip), getString(R.string.server_ip_default));
+        Log.d("serverIP",serverIP);
         serverPort = Integer.parseInt(sharedPreferences.getString(getString(R.string.server_port), getString(R.string.server_port_default)));
 
         ExpandableListView textListView = (ExpandableListView) findViewById(R.id.text_list);
@@ -158,6 +182,30 @@ public class TestViewActivity extends AppCompatActivity {
                 runAllTask.execute();
             }
         });
+        initBindService();
+        Button aidlBtn = (Button) findViewById(R.id.aidl);
+        aidlBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mService != null){
+                    try {
+                        Log.d("client","transferring");
+                        mService.transferJsonMsg("{\"type\":\"HTTP_send\",\"srcHost\":\"10.0.3.17\",\"srcPort\":\"52346\",\"desPort\":\"80\",\"desHost\":\"172.20.179.185\",\"content\":\"GET \\/ HTTP\\/1.1\\r\\nHost: 172.20.179.185\\r\\nConnection: Keep-Alive\\r\\nAccept-Encoding: gzip\\r\\nUser-Agent: okhttp\\/4.9.1\\r\\n\\r\\n13222222222\"}");
+                    } catch (RemoteException e) {
+                        Log.d("client",e.toString());
+                    }
+                }
+            }
+        });
+    }
+    private void initBindService(){
+        Intent intent = new Intent();
+        intent.setAction("bishe.networkmonitor.msgService");
+        intent.setPackage("bishe.networkmonitor");
+        Log.d("client","before bind");
+        isBound = bindService(intent,mServiceConnection,Context.BIND_AUTO_CREATE);
+        Log.d("client","bind:"+isBound);
+        Log.d("client","after bind");
     }
 
 
@@ -168,11 +216,11 @@ public class TestViewActivity extends AppCompatActivity {
 
 
         buildTextData("telephone number", "13222222222", 2);
-        buildTextData("id card number", "130522200011116666", 1);
+        buildTextData("id card number", "13052220001111666x", 1);
         buildTextData("bank card number", "6222022222221234567", 2);
         buildTextData("email", "example@gmail.com", 2);
         buildTextData("car number", "粤A12345", 2);
-        buildTextData("passport number", "AB1234567", 1);
+        buildTextData("passport number", "142222222", 1);
         buildTextData("medicare number", "110101199003073375", 1);
         buildTextData("ip address", "192.168.1.1", 2);
         buildTextData("GPS", "37.77,122.41", 2);

@@ -65,9 +65,9 @@ public class HttpUtil {
     public static URL getURL(TextMsg textMsg) throws MalformedURLException {
         int p = textMsg.remotePort;
         String schema = "http";
-        if (p == 443) {
-            schema = "https";
-        }
+//        if (p == 443) {
+//            schema = "https";
+//        }
         try {
             String l = new BufferedReader(new StringReader(textMsg.primaryText)).readLine();
             String path = l.trim().split(" ")[1];

@@ -56,12 +56,12 @@ public class MsgDetailActivity extends AppCompatActivity {
         TextView appNameView = (TextView) findViewById(R.id.app_name);
         TextView timeView = (TextView) findViewById(R.id.time);
         ImageView imgView = (ImageView) findViewById(R.id.img);
-        ImageView preImgView  = (ImageView) findViewById(R.id.img_pre);
+        ImageView preImgView = (ImageView) findViewById(R.id.img_pre);
         TextView preTextView = (TextView) findViewById(R.id.pre_text);
 
         SpannableString text = new SpannableString(msg.primaryText);
         ForegroundColorSpan redColor = new ForegroundColorSpan(Color.RED);
-        text.setSpan(redColor, msg.from, msg.to + 1, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE);
+        text.setSpan(redColor, msg.from, Math.min(msg.to + 1, text.length() - 1), SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE);
         textView.setText(text);
 
         titleView.setText(getTitle(msg));
@@ -79,14 +79,14 @@ public class MsgDetailActivity extends AppCompatActivity {
                 Log.d("asset error", "not found:" + imgName);
             }
             String imgStr = imgName;
-            Log.d("imgName",imgName);
-            imgStr = imgStr.substring(0,imgStr.indexOf(".jpg"));
-            Log.d("imgStr1",imgStr);
-            if (!imgStr.endsWith("_raw")){
+            Log.d("imgName", imgName);
+            imgStr = imgStr.substring(0, imgStr.indexOf(".jpg"));
+            Log.d("imgStr1", imgStr);
+            if (!imgStr.endsWith("_raw")) {
                 imgStr = imgStr + "_raw";
             }
             imgStr = imgStr + ".jpg";
-            Log.d("imgStrFinal",imgStr);
+            Log.d("imgStrFinal", imgStr);
             try {
                 InputStream inputStream = assetManager.open(imgStr);
                 Drawable drawable = Drawable.createFromStream(inputStream, null);

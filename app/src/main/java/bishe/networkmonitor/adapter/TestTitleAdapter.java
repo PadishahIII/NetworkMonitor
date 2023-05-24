@@ -96,7 +96,7 @@ public class TestTitleAdapter extends BaseExpandableListAdapter {
         View content = (View) convertView.findViewById(R.id.content);
         ImageView imageView = (ImageView) convertView.findViewById(R.id.img);
 
-        request.setText(textMsg.primaryText);
+        request.setText(textMsg.getTarStr());
         title.setText(textMsg.type);
         AssetManager assetManager = mContext.getAssets();
         String imgStr = textMsg.img;
@@ -140,7 +140,7 @@ public class TestTitleAdapter extends BaseExpandableListAdapter {
                     } catch (MalformedURLException e) {
                         Log.d("request error", e.toString());
                     }
-                    Insert(textMsg);
+//                    Insert(textMsg);
                 }
             });
         } else {

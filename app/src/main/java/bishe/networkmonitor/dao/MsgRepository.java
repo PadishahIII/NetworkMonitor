@@ -62,4 +62,13 @@ public class MsgRepository {
             dao.insertAll(textMsgs);
         });
     }
+    public synchronized void insertAllSync(TextMsg... textMsgs){
+        int maxId = dao.getMaxId();
+        int id = maxId + 1;
+        for (TextMsg msg :
+                textMsgs) {
+            msg.id = id++;
+        }
+        dao.insertAll(textMsgs);
+    }
 }

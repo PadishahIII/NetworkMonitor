@@ -30,6 +30,7 @@ android {
     } }
     buildFeatures {
         viewBinding true
+        aidl true
     }
 }
 
@@ -40,6 +41,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment:2.5.2'
     implementation 'androidx.navigation:navigation-ui:2.5.2'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
 //    implementation 'com.android.support:appcompat-v7:28.0.0'
 //    implementation 'com.android.support:design:28.0.0'
 //    implementation 'com.android.support:support-v4:28.0.0'

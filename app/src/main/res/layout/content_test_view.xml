@@ -12,13 +12,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Run All"></Button>
+
+    <Button
+        android:id="@+id/aidl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="AIDL TEST"></Button>
+
     <TextView
+        android:id="@+id/run_all_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/run_all_text"
         android:padding="8dp"
-        android:visibility="gone"
-        ></TextView>
+        android:visibility="gone"></TextView>
 
     <ExpandableListView
         android:id="@+id/text_list"

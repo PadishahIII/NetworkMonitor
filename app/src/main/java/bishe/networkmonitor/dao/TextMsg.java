@@ -125,6 +125,19 @@ public class TextMsg implements Serializable {
         return stringBuffer.toString();
     }
 
+    public String getTarStr() {
+        if (from <= to && from >= 0 && to >= 0) {
+            if (to < primaryText.length()) {
+                return primaryText.substring(from, to);
+            } else {
+                return "";
+            }
+
+        } else {
+            return "";
+        }
+    }
+
     public static String trimString(String str, int len) {
         String s;
         if (str.length() > len) {
